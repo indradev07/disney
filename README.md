@@ -122,7 +122,7 @@ This application is built using the Lit library with a focus on modular Web Comp
 
 Filters are declarative and composable. State is derived and applied at runtime via a central filter mechanism inside home-page.
 
-**** Flow:**
+**Flow:**
 
 ```bash
 User updates filters → filter-panel emits filter-change.
