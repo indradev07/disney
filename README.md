@@ -33,7 +33,6 @@ The **Disney Character Explorer** lets users search and explore characters from 
 
 - [Lit](https://lit.dev) – Web Components
 - Vanilla JavaScript (ES Modules)
-- Tailwind CSS (optional for styling)
 - [Disney API](https://disneyapi.dev/) – Character data source
 
 ---
@@ -112,7 +111,7 @@ This application is built using the Lit library with a focus on modular Web Comp
 
 Filters are declarative and composable. State is derived and applied at runtime via a central filter mechanism inside home-page.
 
-Flow:
+** Flow:
 
 User updates filters → filter-panel emits filter-change.
 home-page listens to this event, updates its internal filter state.
