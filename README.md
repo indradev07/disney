@@ -122,18 +122,6 @@ This application is built using the Lit library with a focus on modular Web Comp
 
 Filters are declarative and composable. State is derived and applied at runtime via a central filter mechanism inside home-page.
 
-**Flow:**
-
-```bash
-User updates filters → filter-panel emits filter-change.
-home-page listens to this event, updates its internal filter state.
-_applyFilters() filters characters using:
-searchTerm
-selected franchise, role, era
-Filtered results are passed to results-grid.
-```
-## 🧠 Filter Architecture
-
 - `<filter-panel>` manages filter state and emits `filter-change` events  
 - `<home-page>` listens to these events and applies filtering logic:
 
