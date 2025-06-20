@@ -93,26 +93,35 @@ disney-character-explorer/
 └── package.json
 
 
-## 🧩 Component Breakdown
+## 📦 Component Breakdown
 
-<search-bar> – Autocomplete search input with keyword highlighting
-<filter-panel> – Dropdowns for role, franchise, and era filtering
-<character-card> – Card UI with image, name, and favorite toggle
-<results-grid> – Paginated grid of characters with empty/fallback states
-<favorites-panel> – Grid of saved favorites
-<character-profile> – Modal for detailed character info
-<skeleton-card> – UI placeholder while loading
+This application is built using the Lit library with a focus on modular Web Components, each encapsulating its own logic, styles, and events.
+
+<app-shell> - Main shell handling routing (explore / favorites) and rendering pages
+<home-page> -   Manages stateful logic like fetching, filtering, and character selection
+<search-bar> -	Autocomplete input with search suggestions and input debouncing
+<filter-panel>  -	Select inputs for filtering by franchise, role, and era
+<results-grid>  - 	Displays a paginated list of character-cards
+<character-card>    -	Represents individual character with favorite toggle
+<character-profile> -	Modal for showing detailed character view
+<favorites-page>  -  Displays saved favorites using favorites-panel
+<favorites-panel>   -	Renders favorite characters and handles removal
+<skeleton-card> -	Reusable loader shown during API fetch
 
 ## 🧠 Filter Architecture
 
-<filter-panel> manages filter state and emits filter-change events
-<home-page> listens and filters characters using:
-Franchise: Matches any films[]
-Role: Matches role field
-Era: Matches era (mocked based on data)
-Combined with searchTerm from <search-bar> for multi-filtered results
+Filters are declarative and composable. State is derived and applied at runtime via a central filter mechanism inside home-page.
 
-## ⚡ UI Performance with Large Data Sets
+Flow:
+
+User updates filters → filter-panel emits filter-change.
+home-page listens to this event, updates its internal filter state.
+_applyFilters() filters characters using:
+searchTerm
+selected franchise, role, era
+Filtered results are passed to results-grid.
+
+## 🚀 UI Performance on Large Data Sets
 
 Pagination in <results-grid> shows 10 characters per page
 Skeleton loading cards improve perceived performance
