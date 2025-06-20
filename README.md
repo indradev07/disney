@@ -33,6 +33,7 @@ The **Disney Character Explorer** lets users search and explore characters from 
 
 - [Lit](https://lit.dev) – Web Components
 - Vanilla JavaScript (ES Modules)
+- Tailwind CSS (optional for styling)
 - [Disney API](https://disneyapi.dev/) – Character data source
 
 ---
@@ -51,12 +52,14 @@ Make sure you have the following installed:
 ```bash
 git clone https://github.com/indradev07/disney.git
 cd disney
+```
 
 ## 🔹 Install & Run
 
 ```bash
 npm install
 npm run dev
+```
 
 Visit the app at: http://localhost:5173
 
@@ -65,11 +68,12 @@ Visit the app at: http://localhost:5173
 
 ## 📂 Project Structure
 
-disney/
-│                
-│── app/
-│   └── app-shell.js              # App entry point
-│  
+```bash
+disney-character-explorer/
+│
+├── public/
+│   └── index.html                # Entry HTML file
+│
 ├── src/
 │   ├── components/               # All Lit web components
 │   │   ├── character-card.js
@@ -87,25 +91,28 @@ disney/
 │   ├── services/
 │   │   └── favorites-service.js
 │
-├── index.html                     # Entry HTML file
+├── index.js                      # App entry point
 ├── README.md
 └── package.json
+```
 
 
 ## 📦 Component Breakdown
 
 This application is built using the Lit library with a focus on modular Web Components, each encapsulating its own logic, styles, and events.
 
+```bash
 <app-shell> - Main shell handling routing (explore / favorites) and rendering pages
 <home-page> -   Manages stateful logic like fetching, filtering, and character selection
 <search-bar> -	Autocomplete input with search suggestions and input debouncing
 <filter-panel>  -	Select inputs for filtering by franchise, role, and era
 <results-grid>  - 	Displays a paginated list of character-cards
-<character-card>   -	Represents individual character with favorite toggle
+<character-card>    -	Represents individual character with favorite toggle
 <character-profile> -	Modal for showing detailed character view
 <favorites-page>  -  Displays saved favorites using favorites-panel
 <favorites-panel>   -	Renders favorite characters and handles removal
 <skeleton-card> -	Reusable loader shown during API fetch
+```
 
 ## 🧠 Filter Architecture
 
@@ -130,5 +137,7 @@ Isolated reactivity via Lit components keeps DOM updates scoped
 
 ## 🛠️ Optional Build
 
+```bash
 npm run build
+```
 This creates a minified output in the dist/ folder.
