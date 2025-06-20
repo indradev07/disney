@@ -96,6 +96,7 @@ disney-character-explorer/
 └── package.json
 ```
 
+---
 
 ## 📦 Component Breakdown
 
@@ -113,27 +114,34 @@ This application is built using the Lit library with a focus on modular Web Comp
 <favorites-panel>   -	Renders favorite characters and handles removal
 <skeleton-card> -	Reusable loader shown during API fetch
 ```
+---
 
 ## 🧠 Filter Architecture
 
 Filters are declarative and composable. State is derived and applied at runtime via a central filter mechanism inside home-page.
 
 ** Flow:
-
+```bash
 User updates filters → filter-panel emits filter-change.
 home-page listens to this event, updates its internal filter state.
 _applyFilters() filters characters using:
 searchTerm
 selected franchise, role, era
 Filtered results are passed to results-grid.
+```
+
+---
 
 ## 🚀 UI Performance on Large Data Sets
 
+```bash
 Pagination in <results-grid> shows 10 characters per page
 Skeleton loading cards improve perceived performance
 Efficient filtering and searching on in-memory data – no re-fetching
 Isolated reactivity via Lit components keeps DOM updates scoped
+```
 
+---
 
 ## 🛠️ Optional Build
 
