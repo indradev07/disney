@@ -135,14 +135,14 @@ All filters and the search term are **combined together** for efficient in-memor
 
 ---
 
+
 ## 🚀 UI Performance on Large Data Sets
 
-```bash
-Pagination in <results-grid> shows 10 characters per page
-Skeleton loading cards improve perceived performance
-Efficient filtering and searching on in-memory data – no re-fetching
-Isolated reactivity via Lit components keeps DOM updates scoped
-```
+- **Pagination** in `<results-grid>` limits display to 10 characters per page for smoother rendering.
+- **Skeleton loading cards** enhance perceived performance while API data is being fetched.
+- **Efficient filtering and search** are performed on in-memory character data — no re-fetching required.
+- **Isolated reactivity** via Lit components ensures scoped updates and avoids unnecessary re-renders.
+
 
 ---
 
