@@ -102,20 +102,19 @@ disney/
 
 ## 📦 Component Breakdown
 
-This application is built using the Lit library with a focus on modular Web Components, each encapsulating its own logic, styles, and events.
+This application is built using the **Lit** library with a focus on modular Web Components, each encapsulating its own logic, styles, and events.
 
-```bash
-<app-shell> -   Main shell handling routing (explore / favorites) and rendering pages
-<home-page> -   Manages stateful logic like fetching, filtering, and character selection
-<search-bar>    -   Autocomplete input with search suggestions and input debouncing
-<filter-panel>  -   Select inputs for filtering by franchise, role, and era
-<results-grid>  -   Displays a paginated list of character-cards
-<character-card>    -   Represents individual character with favorite toggle
-<character-profile> -   Modal for showing detailed character view
-<favorites-page>    -   Displays saved favorites using favorites-panel
-<favorites-panel>   -   Renders favorite characters and handles removal
-<skeleton-card> -   Reusable loader shown during API fetch
-```
+- `<app-shell>` – Main shell handling routing (`/explore`, `/favorites`) and rendering pages  
+- `<home-page>` – Manages stateful logic like data fetching, filtering, and character selection  
+- `<search-bar>` – Autocomplete input with keyword highlighting and input debouncing  
+- `<filter-panel>` – Dropdowns for filtering by **franchise**, **role**, and **era**  
+- `<results-grid>` – Displays a paginated list of `<character-card>` components  
+- `<character-card>` – Represents an individual character with favorite toggle and image  
+- `<character-profile>` – Modal popup for detailed character view  
+- `<favorites-page>` – Displays saved favorite characters using `<favorites-panel>`  
+- `<favorites-panel>` – Renders a list/grid of favorited characters  
+- `<skeleton-card>` – Reusable loader placeholder shown during API data fetch
+
 ---
 
 ## 🧠 Filter Architecture
