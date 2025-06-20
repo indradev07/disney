@@ -36,10 +36,6 @@ The **Disney Character Explorer** lets users search and explore characters from 
 - Tailwind CSS (optional for styling)
 - [Disney API](https://disneyapi.dev/) – Character data source
 
-**Testing:**
-
-- `@open-wc/testing` + `@web/test-runner` – Unit tests
-
 ---
 
 ## 🏁 Getting Started
@@ -97,7 +93,7 @@ disney-character-explorer/
 └── package.json
 
 
-🧩 Component Breakdown
+## 🧩 Component Breakdown
 
 <search-bar> – Autocomplete search input with keyword highlighting
 <filter-panel> – Dropdowns for role, franchise, and era filtering
@@ -107,7 +103,7 @@ disney-character-explorer/
 <character-profile> – Modal for detailed character info
 <skeleton-card> – UI placeholder while loading
 
-🧠 Filter Architecture
+## 🧠 Filter Architecture
 
 <filter-panel> manages filter state and emits filter-change events
 <home-page> listens and filters characters using:
@@ -116,7 +112,7 @@ Role: Matches role field
 Era: Matches era (mocked based on data)
 Combined with searchTerm from <search-bar> for multi-filtered results
 
-⚡ UI Performance with Large Data Sets
+## ⚡ UI Performance with Large Data Sets
 
 Pagination in <results-grid> shows 10 characters per page
 Skeleton loading cards improve perceived performance
@@ -124,7 +120,7 @@ Efficient filtering and searching on in-memory data – no re-fetching
 Isolated reactivity via Lit components keeps DOM updates scoped
 
 
-🛠️ Optional Build
+## 🛠️ Optional Build
 
 npm run build
 This creates a minified output in the dist/ folder.
