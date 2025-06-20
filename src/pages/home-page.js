@@ -6,9 +6,8 @@ import { FavoritesService } from '../services/favorites-service.js';
 import '../components/search-bar.js';
 import '../components/filter-panel.js';
 import '../components/results-grid.js';
-import '../components/character-profile.js'
+import '../components/character-profile.js';
 import '../components/skeleton-card.js';
-
 
 const API_URL = 'https://api.disneyapi.dev/character';
 
@@ -24,29 +23,33 @@ class HomePage extends LitElement {
   };
 
   static styles = css`
-  .skeleton-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-  }
-`;
-
+    .skeleton-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .error {
+      color: red;
+      text-align: center;
+      padding: 2rem;
+    }
+  `;
 
   constructor() {
     super();
     this.characters = [];
     this.filteredCharacters = [];
-    this.favorites = [];
+    this.favorites = FavoritesService.get();
     this.currentQuery = '';
     this.isLoading = false;
     this.error = '';
+    this.selectedCharacter = null;
+    this._filtersInitialized = false;
   }
-  
 
   connectedCallback() {
     super.connectedCallback();
-    this.favorites = FavoritesService.get();
     this._fetchCharacters();
   }
 
@@ -58,19 +61,6 @@ class HomePage extends LitElement {
       const data = await res.json();
       this.characters = data.data || [];
       this.filteredCharacters = [...this.characters];
-      this.isLoading = false;
-      await this.updateComplete;
-
-      const searchBar = this.shadowRoot.querySelector('search-bar');
-      if (searchBar) searchBar.dataset = this.characters;
-
-      const filterPanel = this.shadowRoot.querySelector('filter-panel');
-      if (filterPanel) {
-        const franchises = [...new Set(this.characters.flatMap(c => c.films || []))];
-        const roles = ['Hero', 'Villain', 'Sidekick'];
-        const eras = ['Classic', 'Renaissance', 'Modern'];
-        filterPanel.setOptions({ franchises, roles, eras });
-      }
     } catch (err) {
       console.error(err);
       this.error = 'Failed to load characters. Try again later.';
@@ -115,8 +105,23 @@ class HomePage extends LitElement {
     if (changed.has('selectedCharacter')) {
       document.body.style.overflow = this.selectedCharacter ? 'hidden' : '';
     }
+
+    if (!this._filtersInitialized && !this.isLoading && this.characters.length > 0) {
+      const searchBar = this.shadowRoot.querySelector('search-bar');
+      const filterPanel = this.shadowRoot.querySelector('filter-panel');
+
+      if (searchBar) searchBar.dataset = this.characters;
+
+      if (filterPanel) {
+        const franchises = [...new Set(this.characters.flatMap(c => c.films || []))];
+        const roles = ['Hero', 'Villain', 'Sidekick'];
+        const eras = ['Classic', 'Renaissance', 'Modern'];
+        filterPanel.setOptions({ franchises, roles, eras });
+      }
+
+      this._filtersInitialized = true;
+    }
   }
-   
 
   render() {
     if (this.isLoading) {
@@ -140,25 +145,23 @@ class HomePage extends LitElement {
       <filter-panel @filter-change=${this._onFilterChanged}></filter-panel>
 
       <results-grid
-                .characters=${this.filteredCharacters}
-                .searchTerm=${this.currentQuery}
-                .favorites=${this.favorites}
-                @toggle-favorite=${this._toggleFavorite}
-                @character-click=${e => this._onCharacterClick(e.detail)}
-              ></results-grid>
+        .characters=${this.filteredCharacters}
+        .searchTerm=${this.currentQuery}
+        .favorites=${this.favorites}
+        @toggle-favorite=${this._toggleFavorite}
+        @character-click=${e => this._onCharacterClick(e.detail)}
+      ></results-grid>
 
-              ${this.selectedCharacter
-                ? html`
-                    <character-profile
-                      .character=${this.selectedCharacter}
-                      @close-profile=${() => this.selectedCharacter = null}
-                    ></character-profile>
-                  `
-                : ''}
+      ${this.selectedCharacter
+        ? html`
+            <character-profile
+              .character=${this.selectedCharacter}
+              @close-profile=${() => (this.selectedCharacter = null)}
+            ></character-profile>
+          `
+        : ''}
     `;
   }
 }
 
 customElements.define('home-page', HomePage);
-
-
