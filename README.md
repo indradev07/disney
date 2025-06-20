@@ -73,9 +73,9 @@ disney/
 ├── src/
 │
 │   ├──  app/
-│   │   ├── app-shell.js   
+│   │   └── app-shell.js            # App entry point
 │
-│   ├── components/               # All Lit web components
+│   ├── components/                 # All Lit web components
 │   │   ├── character-card.js
 │   │   ├── results-grid.js
 │   │   ├── filter-panel.js
@@ -91,9 +91,9 @@ disney/
 │   ├── services/
 │   │   └── favorites-service.js
 │
-│   ├── main.js                       # App entry point
+│   ├── main.js                     # App config point
 │
-├── index.html                    # Entry HTML file
+├── index.html                      # Entry HTML file
 ├── README.md
 └── package.json
 ```
