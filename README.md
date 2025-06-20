@@ -128,7 +128,9 @@ Filters are declarative and composable. State is derived and applied at runtime 
   - **Franchise**: Matches any string within the `films[]` array  
   - **Role**: Matches the `role` property (e.g., Hero, Villain, Sidekick)  
   - **Era**: Matches the `era` property (mocked/classified in the dataset)  
-  - **Search Term**: Comes from `<search-bar>`, matched against character `name` and `keywords`
+  - **Search Term**: Comes from `<search-bar>`,
+ 
+- matched against character `name` and `keywords`
 
 All filters and the search term are **combined together** for efficient in-memory filtering — no additional network requests are made.
 
