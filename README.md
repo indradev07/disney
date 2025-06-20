@@ -132,6 +132,17 @@ searchTerm
 selected franchise, role, era
 Filtered results are passed to results-grid.
 ```
+## 🧠 Filter Architecture
+
+- `<filter-panel>` manages filter state and emits `filter-change` events  
+- `<home-page>` listens to these events and applies filtering logic:
+
+  - **Franchise**: Matches any string within the `films[]` array  
+  - **Role**: Matches the `role` property (e.g., Hero, Villain, Sidekick)  
+  - **Era**: Matches the `era` property (mocked/classified in the dataset)  
+  - **Search Term**: Comes from `<search-bar>`, matched against character `name` and `keywords`
+
+All filters and the search term are **combined together** for efficient in-memory filtering — no additional network requests are made.
 
 ---
 
