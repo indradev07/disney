@@ -33,7 +33,6 @@ The **Disney Character Explorer** lets users search and explore characters from 
 
 - [Lit](https://lit.dev) – Web Components
 - Vanilla JavaScript (ES Modules)
-- Tailwind CSS (optional for styling)
 - [Disney API](https://disneyapi.dev/) – Character data source
 
 ---
@@ -106,16 +105,16 @@ disney/
 This application is built using the Lit library with a focus on modular Web Components, each encapsulating its own logic, styles, and events.
 
 ```bash
-<app-shell> - Main shell handling routing (explore / favorites) and rendering pages
+<app-shell> -   Main shell handling routing (explore / favorites) and rendering pages
 <home-page> -   Manages stateful logic like fetching, filtering, and character selection
-<search-bar> -	Autocomplete input with search suggestions and input debouncing
-<filter-panel>  -	Select inputs for filtering by franchise, role, and era
-<results-grid>  - 	Displays a paginated list of character-cards
-<character-card>    -	Represents individual character with favorite toggle
-<character-profile> -	Modal for showing detailed character view
-<favorites-page>  -  Displays saved favorites using favorites-panel
-<favorites-panel>   -	Renders favorite characters and handles removal
-<skeleton-card> -	Reusable loader shown during API fetch
+<search-bar>    -   Autocomplete input with search suggestions and input debouncing
+<filter-panel>  -   Select inputs for filtering by franchise, role, and era
+<results-grid>  -   Displays a paginated list of character-cards
+<character-card>    -   Represents individual character with favorite toggle
+<character-profile> -   Modal for showing detailed character view
+<favorites-page>    -   Displays saved favorites using favorites-panel
+<favorites-panel>   -   Renders favorite characters and handles removal
+<skeleton-card> -   Reusable loader shown during API fetch
 ```
 ---
 
@@ -123,7 +122,8 @@ This application is built using the Lit library with a focus on modular Web Comp
 
 Filters are declarative and composable. State is derived and applied at runtime via a central filter mechanism inside home-page.
 
-** Flow:
+**** Flow:**
+
 ```bash
 User updates filters → filter-panel emits filter-change.
 home-page listens to this event, updates its internal filter state.
