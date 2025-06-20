@@ -69,12 +69,13 @@ Visit the app at: http://localhost:5173
 ## 📂 Project Structure
 
 ```bash
-disney-character-explorer/
-│
-├── public/
-│   └── index.html                # Entry HTML file
-│
+disney/
+│           
 ├── src/
+│
+│   ├──  app/
+│   │   ├── app-shell.js   
+│
 │   ├── components/               # All Lit web components
 │   │   ├── character-card.js
 │   │   ├── results-grid.js
@@ -91,7 +92,9 @@ disney-character-explorer/
 │   ├── services/
 │   │   └── favorites-service.js
 │
-├── index.js                      # App entry point
+│   ├── main.js                       # App entry point
+│
+├── index.html                    # Entry HTML file
 ├── README.md
 └── package.json
 ```
