@@ -65,11 +65,11 @@ Visit the app at: http://localhost:5173
 
 ## 📂 Project Structure
 
-disney-character-explorer/
-│
-├── public/
-│   └── index.html                # Entry HTML file
-│
+disney/
+│                
+│── app/
+│   └── app-shell.js              # App entry point
+│  
 ├── src/
 │   ├── components/               # All Lit web components
 │   │   ├── character-card.js
@@ -87,7 +87,7 @@ disney-character-explorer/
 │   ├── services/
 │   │   └── favorites-service.js
 │
-├── index.js                      # App entry point
+├── index.html                     # Entry HTML file
 ├── README.md
 └── package.json
 
@@ -101,7 +101,7 @@ This application is built using the Lit library with a focus on modular Web Comp
 <search-bar> -	Autocomplete input with search suggestions and input debouncing
 <filter-panel>  -	Select inputs for filtering by franchise, role, and era
 <results-grid>  - 	Displays a paginated list of character-cards
-<character-card>    -	Represents individual character with favorite toggle
+<character-card>   -	Represents individual character with favorite toggle
 <character-profile> -	Modal for showing detailed character view
 <favorites-page>  -  Displays saved favorites using favorites-panel
 <favorites-panel>   -	Renders favorite characters and handles removal
